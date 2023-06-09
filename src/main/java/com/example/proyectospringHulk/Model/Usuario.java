@@ -28,6 +28,10 @@ public class Usuario {
         this.password = password;
         this.correo = correo;
     }
+    public Integer getId() {
+        return idUsuario;
+    }
 
-    // Getters and Setters
+    // Getters and Setters
 }
+

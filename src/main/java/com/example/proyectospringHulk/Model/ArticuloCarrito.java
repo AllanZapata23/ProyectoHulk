@@ -32,6 +32,9 @@ public class ArticuloCarrito {
         this.carrito = carrito;
         this.producto = producto;
     }
+    public Integer getId() {
+        return idArticuloCarrito;
+    }
 
-    // Getters and Setters
+
 }

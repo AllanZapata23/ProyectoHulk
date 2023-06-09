@@ -1,5 +1,5 @@
 package com.example.proyectospringHulk.Service;
-import com.example.proyectospringHulk.Model.Producto;
+import com.example.proyectospringHulk.Model.Usuario;
 import com.example.proyectospringHulk.Repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,43 +11,43 @@ import java.util.Optional;
 @Service
 public class UsuarioService {
     @Autowired
-    ProductoRepository productoRepo;
+    UsuarioRepository usuarioRepo;
 
-    public Producto crearProducto(Producto producto){
+    public Usuario crearUsuario(Usuario usuario){
 
-        return productoRepo.save(producto);
+        return usuarioRepo.save(usuario);
     }
 
-    public void borrarProducto(int id){
+    public void borrarUsuario(int id){
 
-        productoRepo.deleteById(id);
+       usuarioRepo.deleteById(id);
     }
 
-    public List<Producto> listarProductos(){
+    public List<Usuario> listarUsuarios(){
 
-        return productoRepo.findAll();
+        return usuarioRepo.findAll();
     }
 
-    public Producto buscarProductoId(int id){
+    public Usuario buscarUsuarioId(int id){
 
-        return productoRepo.findById(id).orElse(null);
+        return usuarioRepo.findById(id).orElse(null);
     }
 
-    public void modificarProducto(Producto producto) {
+    public void modificarUsuario(Usuario usuario) {
 
-        Optional<Producto> productoEncontrado =
-                productoRepo.findById(producto.getId());
+        Optional<Usuario> usuarioEncontrado =
+                usuarioRepo.findById(usuario.getId());
 
-        if(productoEncontrado.isPresent()) {
-            Producto productoActualizado = productoEncontrado.get();
-            productoActualizado.setNombre(producto.getNombre());
-            productoActualizado.setPrecio(producto.getPrecio());
-            productoActualizado.setDescripcion(producto.getDescripcion());
+        if(usuarioEncontrado.isPresent()) {
+            Usuario usuarioActualizado = usuarioEncontrado.get();
+            usuarioActualizado.setNombre(usuario.getNombre());
+            usuarioActualizado.setPassword(usuario.getPassword());
+            usuarioActualizado.setCorreo(usuario.getCorreo());
 
-            productoRepo.save(productoActualizado);
+            usuarioRepo.save(usuarioActualizado);
         } else {
 
-            throw new NoSuchElementException("No se encontró el producto con ID " + producto.getId());
+            throw new NoSuchElementException("No se encontró el producto con ID " + usuario.getId());
         }
     }
 }

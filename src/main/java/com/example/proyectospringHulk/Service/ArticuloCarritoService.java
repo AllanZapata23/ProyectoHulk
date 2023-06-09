@@ -41,7 +41,6 @@ public class ArticuloCarritoService {
         if (articuloCarritoEncontrado.isPresent()) {
             ArticuloCarrito articuloCarritoActualizado = articuloCarritoEncontrado.get();
             articuloCarritoActualizado.setCantidad(articuloCarrito.getCantidad());
-            articuloCarritoActualizado.setPrecio(articuloCarrito.getPrecio());
             articuloCarritoRepo.save(articuloCarritoActualizado);
         } else {
             throw new NoSuchElementException("No se encontró el artículo con ID " + articuloCarrito.getId());
